@@ -1,0 +1,239 @@
+/* RegisterForm.css */
+
+.user-form-outer {
+  background-color: #181c22;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  font-family: 'Segoe UI', 'Noto Sans KR', sans-serif;
+  color: #f0e9de;
+}
+
+.user-form-container {
+  background-color: rgba(240, 233, 222, 0.95);
+  padding: 48px 36px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(178, 34, 70, 0.15);
+  width: 400px;
+  max-width: 100%;
+  text-align: center;
+  color: #2c2a24;
+  border: 1px solid #d8d1c4;
+  animation: fadeIn 0.6s ease-in-out;
+  box-sizing: border-box;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* 항목간 간격 조금 줄임 */
+  text-align: left;
+  box-sizing: border-box;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  min-width: 0; /* flex 축소 위해 추가 */
+}
+
+.register-form label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #2c2a24;
+  user-select: none;
+}
+
+.register-form input[type="text"],
+.register-form input[type="password"],
+.register-form input[type="email"],
+.register-form input[type="tel"] {
+  padding: 12px 14px;
+  font-size: 15px;
+  border: 1.5px solid #c9c1b0;
+  border-radius: 10px;
+  background-color: #faf6f0;
+  color: #2c2a24;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
+  min-width: 0; /* flex 축소 위해 추가 */
+}
+
+.register-form input::placeholder {
+  color: #7a756a;
+}
+
+.register-form input:focus {
+  border-color: #a72b3a;
+  outline: none;
+  box-shadow: 0 0 8px #a72b3a;
+}
+
+.phone-inputs {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  min-width: 0; /* flex 축소 위해 추가 */
+}
+
+.phone-inputs input {
+  box-sizing: border-box;
+  text-align: center;
+  padding: 10px 12px;
+  font-size: 15px;
+  border-radius: 10px;
+  border: 1.5px solid #c9c1b0;
+  background-color: #faf6f0;
+  color: #2c2a24;
+  transition: border-color 0.3s ease;
+  min-width: 0; /* flex 축소 위해 추가 */
+}
+
+.phone-inputs input[name="part1"] {
+  flex: 0 0 60px; /* 고정폭 */
+}
+
+.phone-inputs input[name="part2"],
+.phone-inputs input[name="part3"] {
+  flex: 1 1 0; /* 균등 분배, 축소 가능 */
+  min-width: 0; /* flex 축소 위해 추가 */
+}
+
+.gender-options {
+  display: flex;
+  gap: 24px;
+  min-width: 0; /* flex 축소 위해 추가 */
+}
+
+.gender-options label {
+  cursor: pointer;
+  user-select: none;
+  color: #2c2a24;
+  font-weight: 500;
+  padding: 6px 12px;
+  border: 1.5px solid #c9c1b0;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.gender-options label:hover {
+  border-color: #a72b3a;
+  background-color: #f6e6e9;
+}
+
+.gender-options input[type="radio"] {
+  cursor: pointer;
+  accent-color: #a72b3a;
+}
+
+.gender-options input[type="radio"]:checked + span {
+  font-weight: 700;
+  color: #a72b3a;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  color: #2c2a24;
+  user-select: none;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  margin-right: 8px;
+  accent-color: #a72b3a;
+}
+
+.error-text {
+  color: #b22222;
+  font-size: 13px;
+  margin-top: 4px;
+  user-select: none;
+}
+
+.password-input {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.toggle-password {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #a72b3a;
+  margin-left: 8px;
+  transition: color 0.3s ease;
+  user-select: none;
+}
+
+.toggle-password:hover {
+  color: #7c212c;
+}
+
+button.submit-button,
+.user-form button[type="submit"] {
+  margin-top: 16px;
+  padding: 14px 0;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 10px;
+  background-color: #163850;
+  color: #f0e9de;
+  border: 2px solid #a72b3a;
+  box-shadow: 0 0 8px #a72b3aaa;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.4s ease;
+  user-select: none;
+}
+
+button.submit-button:hover,
+.user-form button[type="submit"]:hover {
+  background-color: #1d5471;
+  box-shadow: 0 0 14px #a72b3aee, 0 0 30px #a72b3acc;
+}
+
+button.submit-button:active,
+.user-form button[type="submit"]:active {
+  background-color: #125065;
+  box-shadow: 0 0 6px #7c212cbb;
+}
+
+.return-home-button {
+  padding: 10px 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: 2px solid #a72b3a;
+  background-color: #fff;
+  color: #a72b3a;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  user-select: none;
+}
+
+.return-home-button:hover {
+  background-color: #a72b3a;
+  color: #fff;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,112 @@
+/* 로그인 페이지 전체 배경 및 폰트 */
+.login-page {
+  background-color: #181c22; /* 다크 네이비톤 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  font-family: 'Segoe UI', 'Noto Sans KR', sans-serif;
+  color: #f0e9de; /* 연한 아이보리 텍스트 */
+}
+
+/* 로그인 카드 스타일 */
+.login-card {
+  background-color: rgba(240, 233, 222, 0.95); /* 연한 아이보리/베이지 투톤 */
+  padding: 48px 36px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(178, 34, 70, 0.15); /* 중간 톤 레드와인 그림자 */
+  width: 380px;
+  max-width: 100%;
+  text-align: center;
+  animation: fadeIn 0.6s ease-in-out;
+  color: #2c2a24; /* 카드 내 진한 텍스트 */
+  border: 1px solid #d8d1c4; /* 연한 베이지 테두리 */
+}
+
+/* 카드 타이틀 */
+.login-card h2 {
+  font-size: 28px;
+  margin-bottom: 36px;
+  font-weight: 700;
+  color: #2c2a24;
+}
+
+/* 입력 컨테이너 */
+.login-input {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+/* 입력 아이콘 - 중간 톤 레드와인 네온 */
+.login-input .icon {
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #a72b3a; /* 중간 레드와인 */
+  text-shadow: 0 0 6px #a72b3a;
+  pointer-events: none;
+}
+
+/* 입력 필드 스타일 */
+.login-input input {
+  width: 100%;
+  padding: 14px 16px 14px 44px;
+  height: 44px;
+  font-size: 15px;
+  border: 1.5px solid #c9c1b0; /* 연한 베이지 테두리 */
+  border-radius: 10px;
+  background-color: #faf6f0; /* 밝은 아이보리 배경 */
+  color: #2c2a24;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
+}
+
+/* 입력 포커스 시 중간 톤 레드와인 네온 강조 */
+.login-input input:focus {
+  border-color: #a72b3a;
+  outline: none;
+  box-shadow: 0 0 8px #a72b3a;
+}
+
+/* 입력 placeholder 색 */
+.login-input input::placeholder {
+  color: #7a756a; /* 중간 톤 베이지 */
+}
+
+/* 로그인 버튼 - 다크 네이비 배경 + 중간 톤 레드와인 네온 테두리 & 그림자 */
+.login-card button {
+  width: 100%;
+  padding: 14px 0;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 10px;
+
+  background-color: #163850; /* 다크 네이비 */
+  color: #f0e9de; /* 아이보리 텍스트 */
+  border: 2px solid #a72b3a; /* 중간 레드와인 네온 테두리 */
+  box-shadow: 0 0 8px #a72b3aaa; /* 중간 레드와인 네온 그림자 */
+
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.4s ease;
+}
+
+/* 버튼 호버 효과 */
+.login-card button:hover {
+  background-color: #1d5471; /* 조금 밝은 다크 네이비 */
+  box-shadow: 0 0 14px #a72b3aee, 0 0 30px #a72b3acc; /* 중간 레드와인 네온 빛 증폭 */
+}
+
+/* 버튼 클릭(활성) 효과 */
+.login-card button:active {
+  background-color: #125065; /* 더 어두운 다크 네이비 */
+  box-shadow: 0 0 6px #7c212cbb; /* 진한 레드와인 그림자 */
+}
+
+/* fadeIn 애니메이션 */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
