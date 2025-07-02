@@ -3,10 +3,12 @@ import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import products from '../features/product/ProductData'; // 상품 배열 import
 import './ProductDetail.css'; // 스타일 파일 생성해도 되고 생략 가능
+import { useCart } from '../contexts/CartContext';
 
 const ProductDetail = () => {
   const { id } = useParams(); // URL에서 :id 추출
   const navigate = useNavigate();
+  const { addToCart } = useCart();
 
   const product = products.find(p => p.id === parseInt(id));
 
@@ -15,7 +17,7 @@ const ProductDetail = () => {
   }
 
   const handleAddToCart = () => {
-    // 이 부분은 전역 상태나 context로 연결할 수 있음
+    addToCart(product);
     alert(`${product.name} 장바구니에 추가되었습니다.`);
   };
 

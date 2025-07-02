@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { useCart } from '../contexts/CartContext';
 import './Header.css';
-import Home from '../pages/Home';
+import ProductList from '../pages/ProductList';
 
 const categories = ['전체', '위스키', '전통주', '리큐르'];
 
