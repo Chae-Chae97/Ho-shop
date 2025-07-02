@@ -1,7 +1,7 @@
 // src/pages/ProductDetail.jsx
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import products from './ProductData'; // 상품 배열 import
+import products from '../features/product/ProductData'; // 상품 배열 import
 import './ProductDetail.css'; // 스타일 파일 생성해도 되고 생략 가능
 
 const ProductDetail = () => {
