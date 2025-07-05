@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>商品リスト画面 - book</title>
+        <title>カート管理 - book</title>
 
 
         <!-- Custom HTML head -->
@@ -166,89 +166,89 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="productlist-画面定義書"><a class="header" href="#productlist-画面定義書">ProductList 画面定義書</a></h1>
+                        <h1 id="カート管理api定義書"><a class="header" href="#カート管理api定義書">カート管理API定義書</a></h1>
 <h3 id="-概要"><a class="header" href="#-概要">📜 概要</a></h3>
-<img src="../images/ProductList.JPG" alt="イメージ説明" width="500" height="310" />
 <ul>
-<li>ショッピングモールの商品リストページで、商品リストをカテゴリ別にフィルタリング、ソート、グリッド/リスト表示に切り替えることができます。</li>
-<li>各商品をクリックすると詳細ページに移動し、カートに追加する機能を提供します（注文時にはログインが必要です）。</li>
-<li>UserFlow - ユーザーはカテゴリを選択し、希望のソート方法を選択して商品を探索した後、カートに追加したり詳細ページに移動したりします。</li>
+<li><strong>機能:</strong> ユーザーのカートに商品を追加、削除、数量変更、およびカートを空にする機能を提供します。</li>
+<li><strong>呼び出し時点:</strong> 商品リスト/詳細ページで「カートに追加」ボタンクリック時、カートページで商品数量変更/削除/空にするボタンクリック時に呼び出されます。</li>
+<li><strong>主要ロジックファイル:</strong> <code>src/contexts/CartContext.jsx</code> (<code>addToCart</code>、<code>removeFromCart</code>、<code>increaseQuantity</code>、<code>decreaseQuantity</code>、<code>clearCart</code> 関数)</li>
 </ul>
 <hr />
-<!--
-| 名前 | 説明 |
-|------|------|
-| ホーム画面 | ユーザーが最初に表示する画面です。<br>主要な製品が表示されます。 |}
--->
-<h3 id="-主要機能"><a class="header" href="#-主要機能">🔧 主要機能</a></h3>
-<div class="table-wrapper"><table><thead><tr><th>機能</th><th>説明</th></tr></thead><tbody>
-<tr><td>カテゴリフィルタリング</td><td>selectedCategoryに基づいて商品リストをフィルタリング（全体、ウイスキー、伝統酒、リキュール）</td></tr>
-<tr><td>商品ソート</td><td>おすすめ順、あいうえお順、価格の安い順、価格の高い順でソート可能</td></tr>
-<tr><td>ビュー切り替え</td><td>グリッド表示 ↔ リスト表示切り替えボタン</td></tr>
-<tr><td>商品詳細への移動</td><td>商品クリック時に /product/:id ページへ移動</td></tr>
-<tr><td>カートに追加</td><td>ボタンクリック時に該当商品をカートに追加 (useCart)</td></tr>
-</tbody></table>
-</div>
+<h3 id="-api-主要情報"><a class="header" href="#-api-主要情報">📊 API 主要情報</a></h3>
+<ul>
+<li><strong>API 名称:</strong> カート管理 (クライアント内部状態管理)</li>
+<li><strong>対象ストレージ:</strong> React Context (<code>CartContext</code>) 内の <code>cartItems</code> 状態</li>
+<li><strong>処理概要:</strong> <code>cartItems</code> 配列を直接操作してカートの状態を更新します。</li>
+</ul>
 <hr />
-<h3 id="-主要コンポーネントおよびフック"><a class="header" href="#-主要コンポーネントおよびフック">📥 主要コンポーネントおよびフック</a></h3>
-<h4 id="1-productlist-コンポーネント"><a class="header" href="#1-productlist-コンポーネント">1. ProductList コンポーネント</a></h4>
+<h3 id="-リクエスト-request"><a class="header" href="#-リクエスト-request">➡️ リクエスト (Request)</a></h3>
+<h4 id="1-商品追加-クライアント内部関数呼び出し-addtocart"><a class="header" href="#1-商品追加-クライアント内部関数呼び出し-addtocart">1. 商品追加 (クライアント内部関数呼び出し: <code>addToCart</code>)</a></h4>
 <ul>
-<li>役割: 商品リストをグリッドまたはリスト形式でレンダリング</li>
-<li>主要props:
-<ul>
-<li>products : レンダリングする商品配列</li>
-<li>onAddToCart : カート追加関数</li>
-<li>onViewDetails : 商品詳細表示関数</li>
+<li><strong>説明:</strong> カートに商品を追加します。既に存在する商品は数量のみ1増加します。</li>
 </ul>
-</li>
-</ul>
-<!--
-#### 2. useAuth フック
-- 役割: ログイン状態を確認し、ユーザー認証関連の状態を提供
-- 主要機能:
-- isLoggedIn : 現在のログイン状況 (boolean)
--->
-<h4 id="2-usecart-フック"><a class="header" href="#2-usecart-フック">2. useCart フック</a></h4>
-<ul>
-<li>役割: カートの状態と関数を提供</li>
-<li>主要機能:
-<ul>
-<li>addToCart(product) : カートに商品を追加する関数</li>
-<li>活用: カートに追加ボタンクリック時に呼び出し</li>
-</ul>
-</li>
-</ul>
-<h4 id="3-usenavigate-フック-react-router"><a class="header" href="#3-usenavigate-フック-react-router">3. useNavigate フック (React Router)</a></h4>
-<ul>
-<li>役割: ページ移動関数を提供</li>
-<li>主要機能:
-<ul>
-<li>navigate(path) : 指定したパスへ移動</li>
-<li>活用:</li>
-<li>商品詳細ページへの移動時に使用</li>
-</ul>
-</li>
-</ul>
-<h4 id="4-productsdata"><a class="header" href="#4-productsdata">4. productsData</a></h4>
-<ul>
-<li>役割: 全体商品リストデータ配列</li>
-<li>構成: 各商品は id, name, price, image, category を含む</li>
-</ul>
-<h3 id="-usestate-変数および役割"><a class="header" href="#-usestate-変数および役割">💾 useState 変数および役割</a></h3>
-<div class="table-wrapper"><table><thead><tr><th>変数名</th><th>タイプ</th><th>説明</th><th>デフォルト値</th></tr></thead><tbody>
-<tr><td>isGrid</td><td>boolean</td><td>グリッドビュー有効化の有無（trueならグリッド、falseならリスト）</td><td>true</td></tr>
-<tr><td>sortType</td><td>string</td><td>商品ソート方法 (default, alphabet, priceAsc, priceDesc)</td><td>'default'</td></tr>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">フィールド名</th><th style="text-align: left">タイプ</th><th style="text-align: left">説明</th><th style="text-align: left">必須かどうか</th><th style="text-align: left">例値</th></tr></thead><tbody>
+<tr><td style="text-align: left"><code>product</code></td><td style="text-align: left"><code>Object</code></td><td style="text-align: left">追加する商品オブジェクト</td><td style="text-align: left">必須</td><td style="text-align: left"><code>{ id: 1, name: 'マッカラン 18年', price: 35000, ... }</code></td></tr>
 </tbody></table>
 </div>
+<h4 id="2-商品削除-クライアント内部関数呼び出し-removefromcart"><a class="header" href="#2-商品削除-クライアント内部関数呼び出し-removefromcart">2. 商品削除 (クライアント内部関数呼び出し: <code>removeFromCart</code>)</a></h4>
+<ul>
+<li><strong>説明:</strong> カートから特定の商品を完全に削除します。</li>
+</ul>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">フィールド名</th><th style="text-align: left">タイプ</th><th style="text-align: left">説明</th><th style="text-align: left">必須かどうか</th><th style="text-align: left">例値</th></tr></thead><tbody>
+<tr><td style="text-align: left"><code>id</code></td><td style="text-align: left"><code>number</code></td><td style="text-align: left">削除する商品のID</td><td style="text-align: left">必須</td><td style="text-align: left"><code>1</code></td></tr>
+</tbody></table>
+</div>
+<h4 id="3-商品数量増加-クライアント内部関数呼び出し-increasequantity"><a class="header" href="#3-商品数量増加-クライアント内部関数呼び出し-increasequantity">3. 商品数量増加 (クライアント内部関数呼び出し: <code>increaseQuantity</code>)</a></h4>
+<ul>
+<li><strong>説明:</strong> カート内の特定商品の数量を1増加させます。</li>
+</ul>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">フィールド名</th><th style="text-align: left">タイプ</th><th style="text-align: left">説明</th><th style="text-align: left">必須かどうか</th><th style="text-align: left">例値</th></tr></thead><tbody>
+<tr><td style="text-align: left"><code>id</code></td><td style="text-align: left"><code>number</code></td><td style="text-align: left">数量を増加させる商品のID</td><td style="text-align: left">必須</td><td style="text-align: left"><code>1</code></td></tr>
+</tbody></table>
+</div>
+<h4 id="4-商品数量減少-クライアント内部関数呼び出し-decreasequantity"><a class="header" href="#4-商品数量減少-クライアント内部関数呼び出し-decreasequantity">4. 商品数量減少 (クライアント内部関数呼び出し: <code>decreaseQuantity</code>)</a></h4>
+<ul>
+<li><strong>説明:</strong> カート内の特定商品の数量を1減少させます。数量が1の場合、その商品をカートから削除します。</li>
+</ul>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">フィールド名</th><th style="text-align: left">タイプ</th><th style="text-align: left">説明</th><th style="text-align: left">必須かどうか</th><th style="text-align: left">例値</th></tr></thead><tbody>
+<tr><td style="text-align: left"><code>id</code></td><td style="text-align: left"><code>number</code></td><td style="text-align: left">数量を減少させる商品のID</td><td style="text-align: left">必須</td><td style="text-align: left"><code>1</code></td></tr>
+</tbody></table>
+</div>
+<h4 id="5-カートを空にする-クライアント内部関数呼び出し-clearcart"><a class="header" href="#5-カートを空にする-クライアント内部関数呼び出し-clearcart">5. カートを空にする (クライアント内部関数呼び出し: <code>clearCart</code>)</a></h4>
+<ul>
+<li><strong>説明:</strong> カートの全ての商品を削除します。</li>
+<li><strong>リクエストパラメータ:</strong> なし</li>
+</ul>
+<hr />
+<h3 id="-レスポンス-response"><a class="header" href="#-レスポンス-response">⬅️ レスポンス (Response)</a></h3>
+<h4 id="-成功レスポンス-クライアント内部処理"><a class="header" href="#-成功レスポンス-クライアント内部処理">✅ 成功レスポンス (クライアント内部処理)</a></h4>
+<ul>
+<li><strong>処理結果:</strong> <code>CartContext</code> 内の <code>cartItems</code> 状態が更新されます。</li>
+<li><strong>ユーザーフィードバック (例):</strong>
+<ul>
+<li><code>addToCart</code>: <code>${product.name} がショッピングカートに追加されました。</code> (商品がカートに追加されました。)</li>
+<li><code>removeFromCart</code>: (別途通知なし、UIで即時反映)</li>
+<li><code>increaseQuantity</code>、<code>decreaseQuantity</code>: (別途通知なし、UIで即時反映)</li>
+<li><code>clearCart</code>: (別途通知なし、UIで即時反映)</li>
+</ul>
+</li>
+</ul>
+<h4 id="-エラーレスポンス-クライアント内部処理"><a class="header" href="#-エラーレスポンス-クライアント内部処理">❌ エラーレスポンス (クライアント内部処理)</a></h4>
+<p>カート管理はクライアント内部の状態操作であるため、明示的なエラーレスポンスはありません。誤った <code>id</code> が渡された場合、該当商品が存在しないため何も変化しません。</p>
+<ul>
+<li><strong>エラータイプ:</strong> 該当なし (データ操作失敗なし)</li>
+<li><strong>処理結果:</strong> 無効なリクエスト（例: 存在しない商品ID）に対しては状態変化なし.</li>
+</ul>
+
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../pages/screen-definitions.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../api/api-product-detail.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../pages/register.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../api/api-order-payment.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -258,11 +258,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../pages/screen-definitions.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../api/api-product-detail.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../pages/register.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../api/api-order-payment.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
