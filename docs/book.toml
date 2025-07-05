@@ -3,3 +3,6 @@ authors = ["Chae-Chae97"]
 language = "en"
 src = "src"
 title = "book"
+
+[output.html]
+site-url = "https://chae-chae97.github.io/Ho-shop/"
