@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>화면 정의서 - book</title>
+        <title>ユーザープロフィール - book</title>
 
 
         <!-- Custom HTML head -->
@@ -12,33 +12,33 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="favicon.svg">
-        <link rel="shortcut icon" href="favicon.png">
-        <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
-        <link rel="stylesheet" href="css/print.css" media="print">
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="fonts/fonts.css">
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" id="highlight-css" href="highlight.css">
-        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
-        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+        <link rel="stylesheet" id="highlight-css" href="../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
 
 
         <!-- Provide site root and default themes to javascript -->
         <script>
-            const path_to_root = "";
+            const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc.js"></script>
+        <script src="../toc.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -102,7 +102,7 @@
             <!-- populated by js -->
             <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
             <noscript>
-                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
             </noscript>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -137,7 +137,7 @@
                     <h1 class="menu-title">book</h1>
 
                     <div class="right-buttons">
-                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
 
@@ -166,17 +166,77 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="화면-정의서"><a class="header" href="#화면-정의서">화면 정의서</a></h1>
-
+                        <h1 id="ユーザープロフィール管理api定義書"><a class="header" href="#ユーザープロフィール管理api定義書">ユーザープロフィール管理API定義書</a></h1>
+<h3 id="-概要"><a class="header" href="#-概要">📜 概要</a></h3>
+<ul>
+<li><strong>機能:</strong> ログインしたユーザーのプロフィール情報（名前、パスワード）を修正し、クレジットをチャージし、関連情報を<code>localStorage</code>に保存します。</li>
+<li><strong>呼び出し時点:</strong> マイページ(<code>/profile</code>)でユーザーがプロフィール情報修正またはクレジットチャージ機能を使用するときに呼び出されます。</li>
+<li><strong>主要ロジックファイル:</strong> <code>src/pages/Profile.jsx</code> (<code>handleNameUpdate</code>、<code>handlePasswordUpdate</code>、<code>handleCharge</code> 関数)</li>
+</ul>
+<hr />
+<h3 id="-api-主要情報"><a class="header" href="#-api-主要情報">📊 API 主要情報</a></h3>
+<ul>
+<li><strong>API 名称:</strong> ユーザープロフィール管理 (クライアント内部処理)</li>
+<li><strong>対象ストレージ:</strong> <code>localStorage</code></li>
+<li><strong>処理概要:</strong> <code>localStorage</code>に保存されたユーザー情報（<code>users</code>、<code>currentUser</code>）を直接更新するか、<code>CreditContext</code>を通じてクレジット情報を管理します。</li>
+</ul>
+<hr />
+<h3 id="-リクエスト-request"><a class="header" href="#-リクエスト-request">➡️ リクエスト (Request)</a></h3>
+<h4 id="1-名前更新-クライアント内部関数呼び出し-handlenameupdate"><a class="header" href="#1-名前更新-クライアント内部関数呼び出し-handlenameupdate">1. 名前更新 (クライアント内部関数呼び出し: <code>handleNameUpdate</code>)</a></h4>
+<div class="table-wrapper"><table><thead><tr><th>フィールド名</th><th>タイプ</th><th>説明</th><th>必須かどうか</th><th>例値</th></tr></thead><tbody>
+<tr><td><code>newName</code></td><td><code>string</code></td><td>変更するユーザー名</td><td>必須</td><td><code>新しい名前</code></td></tr>
+</tbody></table>
+</div>
+<h4 id="2-パスワード更新-クライアント内部関数呼び出し-handlepasswordupdate"><a class="header" href="#2-パスワード更新-クライアント内部関数呼び出し-handlepasswordupdate">2. パスワード更新 (クライアント内部関数呼び出し: <code>handlePasswordUpdate</code>)</a></h4>
+<div class="table-wrapper"><table><thead><tr><th>フィールド名</th><th>タイプ</th><th>説明</th><th>必須かどうか</th><th>例値</th></tr></thead><tbody>
+<tr><td><code>newPassword</code></td><td><code>string</code></td><td>変更するパスワード</td><td>必須</td><td><code>newPassword123!</code></td></tr>
+</tbody></table>
+</div>
+<h4 id="3-クレジットチャージ-クライアント内部関数呼び出し-handlecharge"><a class="header" href="#3-クレジットチャージ-クライアント内部関数呼び出し-handlecharge">3. クレジットチャージ (クライアント内部関数呼び出し: <code>handleCharge</code>)</a></h4>
+<div class="table-wrapper"><table><thead><tr><th>フィールド名</th><th>タイプ</th><th>説明</th><th>必須かどうか</th><th>例値</th></tr></thead><tbody>
+<tr><td><code>chargeAmount</code></td><td><code>number</code></td><td>チャージするクレジット金額</td><td>必須</td><td><code>10000</code></td></tr>
+</tbody></table>
+</div>
+<hr />
+<h3 id="-レスポンス-response"><a class="header" href="#-レスポンス-response">⬅️ レスポンス (Response)</a></h3>
+<h4 id="-成功レスポンス-クライアント内部処理"><a class="header" href="#-成功レスポンス-クライアント内部処理">✅ 成功レスポンス (クライアント内部処理)</a></h4>
+<ul>
+<li><strong>名前更新成功:</strong>
+<ul>
+<li><strong>処理結果:</strong> <code>localStorage</code>の<code>users</code>および<code>currentUser</code>にユーザー名を更新。</li>
+<li><strong>ユーザーフィードバック:</strong> 「名前が変更されました。」通知表示。</li>
+</ul>
+</li>
+<li><strong>パスワード更新成功:</strong>
+<ul>
+<li><strong>処理結果:</strong> <code>localStorage</code>の<code>users</code>および<code>currentUser</code>にユーザーパスワードを更新。<code>AuthContext</code>状態を同期。</li>
+<li><strong>ユーザーフィードバック:</strong> 「パスワードが変更されました。」通知表示。</li>
+</ul>
+</li>
+<li><strong>クレジットチャージ成功:</strong>
+<ul>
+<li><strong>処理結果:</strong> <code>CreditContext</code>を通じてクレジット残高を更新。</li>
+<li><strong>ユーザーフィードバック:</strong> <code>${amount.toLocaleString()} 円がチャージされました。</code> 通知表示。</li>
+</ul>
+</li>
+</ul>
+<h4 id="-エラーレスポンス-クライアント内部処理"><a class="header" href="#-エラーレスポンス-クライアント内部処理">❌ エラーレスポンス (クライアント内部処理)</a></h4>
+<div class="table-wrapper"><table><thead><tr><th>エラータイプ</th><th>ユーザーフィードバックメッセージ</th><th>説明</th></tr></thead><tbody>
+<tr><td><code>名前入力不足</code></td><td><code>名前を入力してください。</code></td><td>名前フィールドが空です。</td></tr>
+<tr><td><code>パスワード入力不足</code></td><td><code>新しいパスワードを入力してください。</code></td><td>新しいパスワードフィールドが空です。</td></tr>
+<tr><td><code>パスワード有効性失敗</code></td><td><code>パスワードは8〜20文字で、英字、数字、特殊文字をすべて含む必要があります。</code></td><td>パスワードが有効性ルールを満たしていません。</td></tr>
+<tr><td><code>クレジット金額エラー</code></td><td><code>チャージ金額を正しく入力してください。</code></td><td>チャージ金額が無効です（数字ではないか0以下）。</td></tr>
+</tbody></table>
+</div>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="components.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../api/api-login.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="pages/ProductList.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../api/api-product-list.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -186,11 +246,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="components.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../api/api-login.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="pages/ProductList.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../api/api-product-list.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
@@ -221,13 +281,13 @@
         </script>
 
 
-        <script src="elasticlunr.min.js"></script>
-        <script src="mark.min.js"></script>
-        <script src="searcher.js"></script>
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
 
-        <script src="clipboard.min.js"></script>
-        <script src="highlight.js"></script>
-        <script src="book.js"></script>
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
 
         <!-- Custom JS scripts -->
 

@@ -29,7 +29,7 @@ const navigate = useNavigate();
 
 const handlePurchase = () => {
   if (!isLoggedIn) {
-    alert('로그인이 필요합니다.');
+    alert('ログインが必要です。');
     navigate('/login'); // 로그인 페이지로 이동
     return;
   }
@@ -39,14 +39,14 @@ const handlePurchase = () => {
   deductCredit(totalAmount);
   addPurchase(cartItems, totalAmount);
   clearCart();
-  alert('주문이 완료되었습니다, 감사합니다! 🎉');
+  alert('ご注文が完了しました、ありがとうございます！ 🎉');
 };
 
   return (
     <div className="cart-page">
-      <h2>장바구니</h2>
+      <h2>ショッピングカート</h2>
       {cartItems.length === 0 ? (
-        <p>장바구니가 비어 있습니다.</p>
+        <p>ショッピングカートは空です。</p>
       ) : (
         <>
           <ul>
@@ -55,7 +55,7 @@ const handlePurchase = () => {
                 <img src={item.image} alt={item.name} width="80" />
                 <div className="cart-item-info">
                   <strong>{item.name}</strong>
-                  <p>{item.price.toLocaleString()}엔</p>
+                  <p>{item.price.toLocaleString()}円</p>
                   <div className="quantity-controls">
                     <button onClick={() => decreaseQuantity(item.id)}>-</button>
                     <span>{item.quantity}</span>
@@ -64,7 +64,7 @@ const handlePurchase = () => {
                       className="remove-button"
                       onClick={() => removeFromCart(item.id)}
                     >
-                      삭제
+                      削除
                     </button>
                   </div>
                 </div>
@@ -73,17 +73,17 @@ const handlePurchase = () => {
           </ul>
 
           <div className="cart-summary">
-            <p>총 합계: <strong>{totalAmount.toLocaleString()} 엔</strong></p>
-            <p>보유 크레딧: <strong>{credit.toLocaleString()} 엔</strong></p>
+            <p>合計: <strong>{totalAmount.toLocaleString()} 円</strong></p>
+            <p>保有クレジット: <strong>{credit.toLocaleString()} 円</strong></p>
             {!canPurchase && (
               <p style={{ color: 'red' }}>
-                ❌ 크레딧이 부족하여 결제할 수 없습니다.
+                ❌ クレジットが不足しているため、決済できません。
               </p>
             )}
           </div>
 
           <button className="clear-button" onClick={clearCart}>
-            장바구니 비우기
+            カートを空にする
           </button>
 
           <button
@@ -91,7 +91,7 @@ const handlePurchase = () => {
             disabled={!canPurchase}
             onClick={handlePurchase}
           >
-            주문하기
+            注文する
           </button>
         </>
       )}

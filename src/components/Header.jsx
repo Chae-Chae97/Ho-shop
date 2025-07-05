@@ -6,7 +6,7 @@ import { useCart } from '../contexts/CartContext';
 import './Header.css';
 import ProductList from '../pages/ProductList';
 
-const categories = ['전체', '위스키', '전통주', '리큐르'];
+const categories = ['全て', 'ウイスキー', '伝統酒', 'リキュール'];
 
 const Header = ({ selectedCategory, onCategorySelect }) => {
   const navigate = useNavigate();
@@ -19,10 +19,10 @@ const Header = ({ selectedCategory, onCategorySelect }) => {
   const itemCount = cartItems.reduce((total, item) => total + (item.quantity || 1), 0);
 
   const handleLogout = () => {
-    const confirmed = window.confirm('정말 로그아웃 하시겠습니까?');
+    const confirmed = window.confirm('本当にログアウトしますか？');
     if (!confirmed) return;
     logout();
-    alert('로그아웃 되었습니다.');
+    alert('ログアウトしました。');
     navigate('/');
   };
 
@@ -40,7 +40,7 @@ const Header = ({ selectedCategory, onCategorySelect }) => {
       
       <div className="header-left">
         <Link to="/">
-          <img src="/images/Hobar2.jpg" alt="로고" className="logo-image" />
+          <img src="/images/Hobar2.jpg" alt="ロゴ" className="logo-image" />
         </Link>
       </div><h2>Ho's Liqueur Store </h2> 
 
@@ -52,17 +52,17 @@ const Header = ({ selectedCategory, onCategorySelect }) => {
 
         {!isLoggedIn && (
           <>
-            <Link to="/register" className="register-link">회원가입</Link>
-            <Link to="/login" className="login-link">로그인</Link>
+            <Link to="/register" className="register-link">会員登録</Link>
+            <Link to="/login" className="login-link">ログイン</Link>
           </>
         )}
 
         {isLoggedIn && (
           <>
             <Link to="/profile" className="profile-link">
-            <img src='/images/profile-icon.png' alt="내정보" className='profile-icon'/>
+            <img src='/images/profile-icon.png' alt="マイページ" className='profile-icon'/>
             </Link>
-            <button onClick={handleLogout} className="logout-button">로그아웃</button>
+            <button onClick={handleLogout} className="logout-button">ログアウト</button>
           </>
         )}
 

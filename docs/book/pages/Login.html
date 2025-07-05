@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>로그인 화면 - book</title>
+        <title>ログイン画面 - book</title>
 
 
         <!-- Custom HTML head -->
@@ -166,41 +166,41 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="login-화면-정의서"><a class="header" href="#login-화면-정의서">Login 화면 정의서</a></h1>
-<h3 id="-개요"><a class="header" href="#-개요">📜 개요</a></h3>
-<img src="../images/Login.JPG" alt="이미지 설명" width="500" height="280" />
+                        <h1 id="login-画面定義書"><a class="header" href="#login-画面定義書">Login 画面定義書</a></h1>
+<h3 id="-概要"><a class="header" href="#-概要">📜 概要</a></h3>
+<img src="../images/Login.JPG" alt="イメージ説明" width="500" height="280" />
 <ul>
-<li>사용자가 아이디와 비밀번호를 입력하여 서비스에 로그인할 수 있는 페이지입니다.</li>
-<li>인증 성공 시 사용자는 홈 화면으로 이동하며, 실패 시 알림 메시지를 받습니다.</li>
+<li>ユーザーがIDとパスワードを入力してサービスにログインできるページです。</li>
+<li>認証成功時、ユーザーはホーム画面に移動し、失敗時には通知メッセージを受け取ります。</li>
 </ul>
-<h3 id="-주요-기능"><a class="header" href="#-주요-기능">🔧 주요 기능</a></h3>
+<h3 id="-主要機能"><a class="header" href="#-主要機能">🔧 主要機能</a></h3>
 <ul>
-<li>아이디 및 비밀번호 입력</li>
-<li>사용자 인증 및 로그인 처리</li>
-<li>로그인 성공 시 홈 화면으로 리디렉션</li>
+<li>IDおよびパスワード入力</li>
+<li>ユーザー認証およびログイン処理</li>
+<li>ログイン成功時にホーム画面へリダイレクト</li>
 </ul>
-<h3 id="-주요-컴포넌트-및-훅"><a class="header" href="#-주요-컴포넌트-및-훅">📥 주요 컴포넌트 및 훅</a></h3>
+<h3 id="-主要コンポーネントおよびフック"><a class="header" href="#-主要コンポーネントおよびフック">📥 主要コンポーネントおよびフック</a></h3>
 <ul>
-<li><strong>Login</strong>: 페이지 전체 레이아웃을 담당하는 컨테이너 컴포넌트입니다.</li>
-<li><strong>LoginForm</strong>: 실제 입력 폼 UI를 렌더링하고 로그인 로직을 처리합니다.</li>
-<li><strong>useAuth</strong>: 전역 로그인 상태를 업데이트하기 위해 사용됩니다.</li>
-<li><strong>useNavigate</strong>: 로그인 성공 시 다른 경로로 이동하기 위해 사용됩니다.</li>
+<li><strong>Login</strong>: ページ全体のレイアウトを担当するコンテナコンポーネントです。</li>
+<li><strong>LoginForm</strong>: 実際の入力フォームUIをレンダリングし、ログインロジックを処理します。</li>
+<li><strong>useAuth</strong>: グローバルなログイン状態を更新するために使用されます。</li>
+<li><strong>useNavigate</strong>: ログイン成功時に別のパスへ移動するために使用されます。</li>
 </ul>
 <h3 id="-handlesubmit--in-loginformjsx"><a class="header" href="#-handlesubmit--in-loginformjsx">🔍 handleSubmit( ) (in LoginForm.jsx)</a></h3>
 <ul>
-<li>입력된 아이디/비밀번호로 <code>localStorage</code>의 사용자 정보와 비교하여 인증을 수행합니다.</li>
-<li><strong>인증 실패 시</strong>: 경고창을 표시합니다.</li>
-<li><strong>인증 성공 시</strong>:
+<li>入力されたID/パスワードと<code>localStorage</code>のユーザー情報を比較して認証を実行します。</li>
+<li><strong>認証失敗時</strong>: 警告メッセージを表示します。</li>
+<li><strong>認証成功時</strong>:
 <ol>
-<li>전역 상태를 업데이트하고(<code>AuthContext</code>), 토큰을 저장합니다.</li>
-<li>"로그인 되었습니다." 알림 후 홈 화면(<code>/</code>)으로 이동합니다.</li>
+<li>グローバル状態を更新し(<code>AuthContext</code>)、トークンを保存します。</li>
+<li>「ログインしました。」と通知後、ホーム画面(<code>/</code>)へ移動します。</li>
 </ol>
 </li>
 </ul>
-<h3 id="-usestate-변수-및-역할-in-loginformjsx"><a class="header" href="#-usestate-변수-및-역할-in-loginformjsx">💾 useState 변수 및 역할 (in LoginForm.jsx)</a></h3>
-<div class="table-wrapper"><table><thead><tr><th style="text-align: left">변수</th><th style="text-align: left">설명</th></tr></thead><tbody>
-<tr><td style="text-align: left"><code>id</code></td><td style="text-align: left">사용자가 입력한 아이디 값을 저장합니다.</td></tr>
-<tr><td style="text-align: left"><code>password</code></td><td style="text-align: left">사용자가 입력한 비밀번호 값을 저장합니다.</td></tr>
+<h3 id="-usestate-変数および役割-in-loginformjsx"><a class="header" href="#-usestate-変数および役割-in-loginformjsx">💾 useState 変数および役割 (in LoginForm.jsx)</a></h3>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">変数</th><th style="text-align: left">説明</th></tr></thead><tbody>
+<tr><td style="text-align: left"><code>id</code></td><td style="text-align: left">ユーザーが入力したIDの値を保存します。</td></tr>
+<tr><td style="text-align: left"><code>password</code></td><td style="text-align: left">ユーザーが入力したパスワードの値を保存します。</td></tr>
 </tbody></table>
 </div>
                     </main>

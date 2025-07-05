@@ -25,7 +25,7 @@ const ProductList = ({ selectedCategory }) => {
     }
     */
     addToCart(product);
-    alert(`${product.name} 장바구니에 추가되었습니다.`);
+    alert(`${product.name} がショッピングカートに追加されました。`);
   };
 
   // 상품 상세 페이지 이동
@@ -35,7 +35,7 @@ const ProductList = ({ selectedCategory }) => {
 
   // 선택된 카테고리에 따라 필터링
   const filteredProducts =
-    selectedCategory === '전체'
+    selectedCategory === '全て'
       ? products
       : products.filter((p) => p.category === selectedCategory);
 
@@ -47,7 +47,7 @@ const ProductList = ({ selectedCategory }) => {
         return productsCopy.sort((a, b) => {
           const nameA = a.name || a.username || '';
           const nameB = b.name || b.username || '';
-          return nameA.localeCompare(nameB, 'ko');
+          return nameA.localeCompare(nameB, 'ja');
         });
       case 'priceAsc':
         return productsCopy.sort((a, b) => a.price - b.price);
@@ -65,14 +65,14 @@ const ProductList = ({ selectedCategory }) => {
           <button
             onClick={() => setIsGrid(true)}
             className={isGrid ? 'active' : ''}
-            title="그리드 보기"
+            title="グリッド表示"
           >
             <LayoutGrid size={30} />
           </button>
           <button
             onClick={() => setIsGrid(false)}
             className={!isGrid ? 'active' : ''}
-            title="리스트 보기"
+            title="リスト表示"
           >
             <List size={32} />
           </button>
@@ -82,12 +82,12 @@ const ProductList = ({ selectedCategory }) => {
           className="sort-select"
           value={sortType}
           onChange={(e) => setSortType(e.target.value)}
-          aria-label="상품 정렬 방식 선택"
+          aria-label="商品の並べ替え方法を選択"
         >
-          <option value="default">추천 순</option>
-          <option value="alphabet">가나다 순</option>
-          <option value="priceAsc">가격 낮은순</option>
-          <option value="priceDesc">가격 높은순</option>
+          <option value="default">おすすめ順</option>
+          <option value="alphabet">名前順</option>
+          <option value="priceAsc">価格の安い順</option>
+          <option value="priceDesc">価格の高い順</option>
         </select>
       </div>
 

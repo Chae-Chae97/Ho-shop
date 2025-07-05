@@ -13,10 +13,10 @@ const ProductCard = ({ product, onAddToCart, onViewDetails, isGrid }) => {
       />
       <div className="product-info">
         <h3>{product.name}</h3>
-        <p>{product.price.toLocaleString()} 엔</p>
+        <p>{product.price.toLocaleString()} 円</p>
         <button 
         className={isGrid ? 'cart-button grid' : 'cart-button list'}
-        onClick={() => onAddToCart(product)}>장바구니 담기</button>
+        onClick={() => onAddToCart(product)}>カートに入れる</button>
       </div>
     </div>
   );

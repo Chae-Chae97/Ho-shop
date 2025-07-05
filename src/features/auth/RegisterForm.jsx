@@ -15,7 +15,7 @@ const RegisterForm = ({
   return (
     <form className="register-form" onSubmit={onSubmit} noValidate>
       <div className="form-group">
-        <label htmlFor="username">이름</label>
+        <label htmlFor="username">名前</label>
         <input
           id="username"
           type="text"
@@ -33,7 +33,7 @@ const RegisterForm = ({
       </div>
 
       <div className="form-group">
-        <label htmlFor="id">아이디</label>
+        <label htmlFor="id">ID</label>
         <input
           id="id"
           type="text"
@@ -51,7 +51,7 @@ const RegisterForm = ({
       </div>
 
       <div className="form-group">
-        <label htmlFor="password">비밀번호</label>
+        <label htmlFor="password">パスワード</label>
         <div className="password-input">
           <input
             id="password"
@@ -66,7 +66,7 @@ const RegisterForm = ({
             type="button"
             className="toggle-password"
             onClick={togglePasswordVisibility}
-            aria-label={showPassword ? "비밀번호 숨기기" : "비밀번호 보기"}
+            aria-label={showPassword ? "パスワードを隠す" : "パスワードを表示"}
           >
             {showPassword ? '👁️' : '👁️‍🗨️'}
           </button>
@@ -79,7 +79,7 @@ const RegisterForm = ({
       </div>
 
       <div className="form-group">
-        <label htmlFor="phone">전화번호</label>
+        <label htmlFor="phone">電話番号</label>
         <div className="phone-inputs" role="group" aria-labelledby="phone-label">
           <input
             id="phone-part1"
@@ -90,7 +90,7 @@ const RegisterForm = ({
             maxLength={3}
             placeholder="010"
             required
-            aria-label="전화번호 첫 번째"
+            aria-label="電話番号の最初の部分"
           />
           <input
             id="phone-part2"
@@ -100,7 +100,7 @@ const RegisterForm = ({
             onChange={onPhoneChange}
             maxLength={4}
             required
-            aria-label="전화번호 두 번째"
+            aria-label="電話番号の2番目の部分"
           />
           <input
             id="phone-part3"
@@ -110,7 +110,7 @@ const RegisterForm = ({
             onChange={onPhoneChange}
             maxLength={4}
             required
-            aria-label="전화번호 세 번째"
+            aria-label="電話番号の3番目の部分"
           />
         </div>
         {errors.phone && (
@@ -121,7 +121,7 @@ const RegisterForm = ({
       </div>
 
       <div className="form-group">
-        <label htmlFor="email">이메일</label>
+        <label htmlFor="email">メール</label>
         <input
           id="email"
           type="email"
@@ -139,28 +139,28 @@ const RegisterForm = ({
       </div>
 
       <fieldset className="form-group gender-fieldset">
-        <legend>성별</legend>
+        <legend>性別</legend>
         <label>
           <input
             type="radio"
             name="sex"
-            value="남성"
-            checked={form.sex === '남성'}
+            value="男性"
+            checked={form.sex === '男性'}
             onChange={onChange}
             required
           />
-          남성
+          男性
         </label>
         <label>
           <input
             type="radio"
             name="sex"
-            value="여성"
-            checked={form.sex === '여성'}
+            value="女性"
+            checked={form.sex === '女性'}
             onChange={onChange}
             required
           />
-          여성
+          女性
         </label>
         {errors.sex && (
           <div className="error-text" role="alert">
@@ -178,7 +178,7 @@ const RegisterForm = ({
             onChange={onChange}
             required
           />
-          메일 수신에 동의합니다.
+          メール受信に同意します。
         </label>
         {errors.mailagree && (
           <div className="error-text" role="alert">
@@ -188,7 +188,7 @@ const RegisterForm = ({
       </div>
 
       <button type="submit" className="submit-button">
-        회원가입
+        会員登録
       </button>
     </form>
   );

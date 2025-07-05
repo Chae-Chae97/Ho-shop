@@ -1,44 +1,44 @@
-# Profile 화면 정의서
-### 📜 개요
-<img src="../images/Profile.JPG" alt="이미지 설명" width="400" height="300" />
+# Profile 画面定義書
+### 📜 概要
+<img src="../images/Profile.JPG" alt="イメージ説明" width="400" height="300" />
 
-- 사용자 정보를 조회하고 수정하며, 크레딧을 충전하고 구매 내역을 확인할 수 있는 페이지이다.
-- 로그인한 사용자만 접근 가능하다.
+- ユーザー情報を照会・修正し、クレジットをチャージし、購入履歴を確認できるページです。
+- ログインしているユーザーのみアクセス可能です。
 
-### 🔧 주요 기능
-- 사용자 아이디 표시
-- 사용자 이름 수정 기능
-- 사용자 비밀번호 변경 기능 (유효성 검사 포함)
-- 현재 크레딧 잔액 표시
-- 크레딧 충전 기능
-- 구매 내역 조회 (PurchaseHistory 컴포넌트 사용)
+### 🔧 主要機能
+- ユーザーID表示
+- ユーザー名修正機能
+- ユーザーパスワード変更機能（有効性検証を含む）
+- 現在のクレジット残高表示
+- クレジットチャージ機能
+- 購入履歴照会 (PurchaseHistory コンポーネントを使用)
 
-### 📥 주요 컴포넌트 및 훅
-- ProfilePage - 페이지 전체 로직을 담당하는 컨테이너 컴포넌트
-- PurchaseHistory - 사용자의 구매 내역을 표시하는 컴포넌트
-- useAuth - 사용자 인증 정보 (currentUser, logout, updateUser) 관리
-- useCredit - 사용자 크레딧 정보 (credit, chargeCredit) 관리
-- useState - 컴포넌트 상태 관리 (이름 수정, 비밀번호 변경, 크레딧 충전 등)
+### 📥 主要コンポーネントおよびフック
+- ProfilePage - ページ全体のロジックを担当するコンテナコンポーネント
+- PurchaseHistory - ユーザーの購入履歴を表示するコンポーネント
+- useAuth - ユーザー認証情報 (currentUser, logout, updateUser) 管理
+- useCredit - ユーザークレジット情報 (credit, chargeCredit) 管理
+- useState - コンポーネントの状態管理 (名前修正、パスワード変更、クレジットチャージなど)
 
-### 🔍 주요 함수
-- **handleNameUpdate()**: 이름 유효성 검사 후 localStorage 및 UI 업데이트.
-- **handlePasswordUpdate()**: 비밀번호 유효성 검사 및 확인 후 localStorage 및 context 업데이트.
-- **updateUserInStorage(updatedUser)**: localStorage에 사용자 정보 업데이트.
-- **handleCharge()**: 충전 금액 유효성 검사 후 크레딧 충전 및 UI 업데이트.
+### 🔍 主要関数
+- **handleNameUpdate()**: 名前の有効性検証後、localStorage および UI を更新。
+- **handlePasswordUpdate()**: パスワードの有効性検証および確認後、localStorage および context を更新。
+- **updateUserInStorage(updatedUser)**: localStorage のユーザー情報を更新。
+- **handleCharge()**: チャージ金額の有効性検証後、クレジットチャージおよび UI を更新。
 
-### 💾 useState 변수 및 역할
-|변수|	설명|
+### 💾 useState 変数および役割
+|変数|説明|
 |---|---|
-|isEditingName|	이름 수정 모드 활성화/비활성화 (boolean)|
-|newName|	수정할 새로운 이름 입력값|
-|isEditingPassword|	비밀번호 변경 모드 활성화/비활성화 (boolean)|
-|newPassword|	변경할 새로운 비밀번호 입력값|
-|showPassword|	비밀번호 표시/숨기기 토글 (boolean)|
-|chargeAmount|	크레딧 충전 금액 입력값|
+|isEditingName|名前修正モードの有効/無効 (boolean)|
+|newName|修正する新しい名前の入力値|
+|isEditingPassword|パスワード変更モードの有効/無効 (boolean)|
+|newPassword|変更する新しいパスワードの入力値|
+|showPassword|パスワード表示/非表示トグル (boolean)|
+|chargeAmount|クレジットチャージ金額の入力値|
 
-### validate( ) 함수의 유효성 검사 기준 (handlePasswordUpdate 함수 내)
-|항목|조건|정규식|
+### validate( ) 関数の有効性検証基準 (handlePasswordUpdate 関数内)
+|項目|条件|正規表現|
 |---|---|---|
-|비밀번호|	영문+숫자+특수문자 포함 8~20자|`passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,20}$/;`|
-|이름|	공백이 아니어야 함|`!newName.trim()`|
-|충전 금액|	숫자이며 0보다 커야 함|`isNaN(amount) || amount <= 0`|
+|パスワード|英字+数字+特殊文字を含む8～20文字|`passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,20}$/;`|
+|名前|空白であってはならない|`!newName.trim()`|
+|チャージ金額|数値であり0より大きいこと|`isNaN(amount) || amount <= 0`|

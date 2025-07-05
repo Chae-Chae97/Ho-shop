@@ -13,26 +13,26 @@ const ProductDetail = () => {
   const product = products.find(p => p.id === parseInt(id));
 
   if (!product) {
-    return <div>상품을 찾을 수 없습니다.</div>;
+    return <div>商品が見つかりません。</div>;
   }
 
   const handleAddToCart = () => {
     addToCart(product);
-    alert(`${product.name} 장바구니에 추가되었습니다.`);
+    alert(`${product.name} がショッピングカートに追加されました。`);
   };
 
   return (
     <div className="product-detail">
-      <button onClick={() => navigate(-1)}>← 뒤로가기</button>
+      <button onClick={() => navigate(-1)}>← 戻る</button>
 
       <div className="product-detail-card">
         <img src={product.image} alt={product.name} className="detail-image" />
         <div className="product-info">
           <h2>{product.name}</h2>
-          <p>카테고리: {product.category}</p>
-          <p>가격: {product.price.toLocaleString()} 엔</p>
+          <p>カテゴリー: {product.category}</p>
+          <p>価格: {product.price.toLocaleString()} 円</p>
           <p> {product.description}</p>
-          <button onClick={handleAddToCart}>장바구니 담기</button>
+          <button onClick={handleAddToCart}>カートに入れる</button>
         </div>
       </div>
     </div>

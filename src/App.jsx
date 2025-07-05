@@ -9,7 +9,7 @@ import ScrollToTop from './utils/ScrollToTop';
 
 const App = () => {
   const [users, setUsers] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState('전체');
+  const [selectedCategory, setSelectedCategory] = useState('全て');
 
   // ✅ 새로고침 시 localStorage에서 users 복원
   useEffect(() => {
